@@ -19,8 +19,8 @@ const schedule = () => {
   for (let i = 1; i < data.length; i++) {
     result = rebase_result(result, data[i]);
   }
-  console.log(result.sort((a, b) => a.start - b.start));
-  return result.sort((a, b) => a.start - b.start);
+  console.log(result);
+  return result;
 }
 
 const rebase_result = (result,event) => {
@@ -47,11 +47,11 @@ const rebase_result = (result,event) => {
       finish : event.finish
     })
   }
-  return result;
+  return result.sort((a, b) => a.start - b.start);
 }
 
 const getStartDate = (array) => {
-  return array.sort((a, b) => a.start - b.start)[0].start;
+  return array[0].start;
 }
 const getFinishDate = (array) => {
   return array.sort((a, b) => b.finish - a.finish)[0].finish;
